@@ -2,6 +2,7 @@ import pytest
 
 from src.channel import Channel
 from src.video import Video, PLVideo
+from src.playlist import PlayList
 
 
 @pytest.fixture(scope="session")
@@ -22,3 +23,8 @@ def video1():
 @pytest.fixture(scope="session")
 def video2():
     return PLVideo('4fObz_qw9u4', 'PLv_zOGKKxVph_8g2Mqc3LMhj0M_BfasbC')
+
+
+@pytest.fixture(scope="session")
+def playlist():
+    return PlayList("PLv_zOGKKxVpj-n2qLkEM2Hj96LO6uqgQw")
