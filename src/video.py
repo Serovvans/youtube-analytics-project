@@ -1,7 +1,7 @@
-from src.channel import Channel
+from src.youtube import YouTubeApi
 
 
-class Video:
+class Video(YouTubeApi):
     """Класс для youtube-видео"""
     def __init__(self, video_id: str):
         """Экземпляр инициализируется id видео. Дальше все данные будут подтягиваться по API."""
@@ -14,10 +14,6 @@ class Video:
         self.view_count: int = video['items'][0]['statistics']['viewCount']
         self.like_count: int = video['items'][0]['statistics']['likeCount']
         self.url: str = f"https://youtu.be/{video_id}"
-
-    @classmethod
-    def get_service(cls):
-        return Channel.get_service()
 
     def __str__(self):
         return self.video_title
