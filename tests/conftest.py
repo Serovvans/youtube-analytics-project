@@ -28,3 +28,8 @@ def video2():
 @pytest.fixture(scope="session")
 def playlist():
     return PlayList("PLv_zOGKKxVpj-n2qLkEM2Hj96LO6uqgQw")
+
+
+@pytest.fixture(scope="session")
+def broken_video():
+    return Video('broken_video_id')
