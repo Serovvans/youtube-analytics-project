@@ -10,13 +10,16 @@ class Video(YouTubeApi):
         youtube = self.get_service()
         video = youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
                                       id=video_id).execute()
-        self.video_title: str = video['items'][0]['snippet']['title']
-        self.view_count: int = video['items'][0]['statistics']['viewCount']
-        self.like_count: int = video['items'][0]['statistics']['likeCount']
-        self.url: str = f"https://youtu.be/{video_id}"
+        try:
+            self.title: str = video['items'][0]['snippet']['title']
+            self.view_count: int = video['items'][0]['statistics']['viewCount']
+            self.like_count: int = video['items'][0]['statistics']['likeCount']
+            self.url: str = f"https://youtu.be/{video_id}"
+        except IndexError:
+            self.title = self.view_count = self.like_count = self.url = None
 
     def __str__(self):
-        return self.video_title
+        return self.title
 
 
 class PLVideo(Video):
